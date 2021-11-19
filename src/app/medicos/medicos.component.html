@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <h1>Médicos</h1>
+  <div class="card">
+    <div class="card-body">
+      <img
+        class="img"
+        src="https://github.com/RosangelaSSBorges/angular-AgendaMedica/blob/master/src/assets/img/medicos.png?raw=true"
+        alt=""
+      />
+    </div>
+  </div>
+
+  <hr />
+
+  <ul *ngFor="let item of listMedico | async">
+    <li [title]="['chave ' + item.key]">Nome: {{ item.nome }}</li>
+    <li [title]="['chave ' + item.key]">
+      Especialidade: {{ item.especialidade }}
+    </li>
+    <li [title]="['chave ' + item.key]">Contato: {{ item.contato }}</li>
+  </ul>
+</div>
+
+<!-- incluir novo médico -->
+<h3>Cadastrar novo Médico</h3>
+<div>Nome:</div>
+<div><input [(ngModel)]="nome" /></div>
+<br />
+<div>Especialidade:</div>
+<div><input type="text" [(ngModel)]="especialidade" /></div>
+<br />
+<div>Contato:</div>
+<div><input type="text" [(ngModel)]="contato" /></div>
+<br />
+<button class="btn btn-lg btn-block btn-primary" (click)="addItem()">
+  Adicionar
+</button>
+<hr />
+<h3>Excluir Médico</h3>
+<table border="1">
+  <tr class="tr">
+    <th>Nome</th>
+    <th>Especialidade</th>
+    <th>Contato</th>
+    <th>Comando</th>
+  </tr>
+  <tr *ngFor="let item of listMedico | async">
+    <td [title]="['chave ' + item.key]">{{ item.nome }}</td>
+    <td [title]="['chave ' + item.key]">{{ item.especialidade }}</td>
+    <td [title]="['chave ' + item.key]">{{ item.contato }}</td>
+    <!--<td>{{ item.email }}</td>-->
+
+    <td><button (click)="deleteItem(item.key)">Remover</button></td>
+  </tr>
+</table>

@@ -1,0 +1,45 @@
+<h1>Pacientes</h1>
+
+<hr />
+<div>Nome:</div>
+<div><input [(ngModel)]="nome" /></div>
+<br />
+<div>Hora:</div>
+<div><input type="datetime-local" [(ngModel)]="data" /></div>
+<br />
+
+<div>Médico:</div>
+<div><input [(ngModel)]="medico" /></div>
+<br />
+<!--
+  <div>Médico</div>
+<select *ngFor="let item of agendaService.listMedico | async" name="medico">
+  <option value="valor1" [title]="['chave ' + item.key]">
+    {{ item.nomeMedico }}
+  </option>
+  <option value="valor2" selected>Valor 2</option>
+  <option value="valor3">Valor 3</option>
+</select>
+-->
+<hr />
+<button class="btn btn-lg btn-block btn-primary" (click)="addItem()">
+  Adicionar
+</button>
+<hr />
+<table border="1">
+  <tr class="tr">
+    <th>Nome Paciente</th>
+    <th>Horário</th>
+    <th>Médico</th>
+    <th>Comando</th>
+  </tr>
+  <tr *ngFor="let item of list | async">
+    <td [title]="['chave ' + item.key]">{{ item.nome }}</td>
+    <td [title]="['chave ' + item.key]">{{ item.data }}</td>
+    <td [title]="['chave ' + item.key]">{{ item.medico }}</td>
+    <!--<td>{{ item.email }}</td>-->
+
+    <td><button (click)="deleteItem(item.key)">Remover</button></td>
+  </tr>
+</table>
+<br />

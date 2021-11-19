@@ -1,0 +1,14 @@
+p {
+  font-family: Lato;
+}
+body {
+  box-sizing: border-box;
+}
+
+.footer {
+  text-align: center;
+  font-size: 12px;
+  position: static;
+  bottom: 0;
+  width: 100%;
+}
